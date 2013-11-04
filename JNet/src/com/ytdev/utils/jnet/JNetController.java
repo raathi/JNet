@@ -10,23 +10,34 @@
  ******************************************************************************/
 package com.ytdev.utils.jnet;
 
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map.Entry;
+import java.util.Properties;
+
+import org.omg.CORBA.SystemException;
+
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.Tab;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.stage.Stage;
 
 public class JNetController {
-	
+
 	@FXML
 	private Label appTitle;
-	
-	/*TCP*/
+
+	/* TCP */
 	@FXML
 	private TextField txfIP_TCP;
 	@FXML
@@ -37,8 +48,8 @@ public class JNetController {
 	private TextArea txaMessage_TCP;
 	@FXML
 	private ChoiceBox<JNetBean> chbSocketMode_TCP;
-	
-	/*UDP*/
+
+	/* UDP */
 	@FXML
 	private TextField txfIP_UDP;
 	@FXML
@@ -53,64 +64,111 @@ public class JNetController {
 	private RadioButton rdbMulticast;
 	@FXML
 	private RadioButton rdbUnicast;
-	
-	/*Network Interface*/
+
+	/* Network Interface */
 	@FXML
 	private ProgressBar progressBarNWInterface;
 	@FXML
-	private TreeView<JNetBean> treViewNWInterface;
-	
-	/*System Information*/
+	private TreeView<String> treViewNWInterface;
+	@FXML
+	private Tab tabNWInterface;
+
+	/* System Information */
 	@FXML
 	private ProgressBar progressBarSysInfo;
 	@FXML
-	private TableView<JNetBean> tblViewSysInfo;
-	
+	private TableView<SysInfoBean> tblViewSysInfo;
+	@FXML
+	private Tab tabSysInfo;
+
 	private Stage stage;
-	
-	
-	public void setStage(Stage stage){
+
+	public void setStage(Stage stage) {
 		this.stage = stage;
 	}
-	
+
 	@FXML
-	protected void sendTCPMessage(){
-		System.out.println("TCP Message Send"+txfIP_TCP.getText()+txfPort_TCP.getText());
+	protected void sendTCPMessage() {
+		System.out.println("TCP Message Send" + txfIP_TCP.getText()
+				+ txfPort_TCP.getText());
 	}
-	
+
 	@FXML
-	protected void sendUDPMessage(){
+	protected void sendUDPMessage() {
 		System.out.println("UDP Message Send");
 	}
-	
+
 	@FXML
-	protected void clearTCPMsgHistory(){
+	protected void clearTCPMsgHistory() {
 		txaMessage_TCP.clear();
 	}
-	
+
 	@FXML
-	protected void clearUDPMsgHistory(){
+	protected void clearUDPMsgHistory() {
 		txaMessage_UDP.clear();
 	}
-	
+
 	@FXML
-	protected void processdistributionMode(){
+	protected void processdistributionMode() {
 
 	}
-	
+
 	@FXML
-	protected void closeApp(){
+	protected void closeApp() {
 		stage.close();
 	}
-	
+
 	@FXML
-	protected void minimizeApp(){
+	protected void minimizeApp() {
 		stage.setIconified(true);
 	}
-	
+
 	@FXML
-	protected void aboutApp(){
+	protected void aboutApp() {
 		System.out.println("JNet App version 0.01");
+	}
+
+	@FXML
+	protected void loadNWInterfaceInfo() {
+		HashMap<String, List<String>> nwInfoMap = NetworkInterface
+				.getInformation();
+		TreeItem<String> hostItem = new TreeItem<String>(
+				NetworkInterface.getHostName());
+		hostItem.setExpanded(true);
+		Iterator<Entry<String, List<String>>> iterator = nwInfoMap.entrySet()
+				.iterator();
+		while (iterator.hasNext()) {
+			Entry<String, List<String>> entry = (Entry<String, List<String>>) iterator
+					.next();
+			List<String> infoList = (List<String>) entry.getValue();
+			TreeItem<String> interfaceItem = new TreeItem<String>(
+					entry.getKey());
+			if (infoList != null && !infoList.isEmpty()) {
+				for (String info : infoList) {
+					interfaceItem.getChildren().add(new TreeItem<String>(info));
+				}
+			}
+			hostItem.getChildren().add(interfaceItem);
+		}
+		progressBarNWInterface.setVisible(false);
+		treViewNWInterface.setRoot(hostItem);
+	}
+
+	@FXML
+	protected void loadSysInfo() {
+		System.out.println();
+		ObservableList<SysInfoBean> sysInfoData = tblViewSysInfo.getItems();
+		Properties systemProperties = System.getProperties();
+		Iterator<Entry<Object, Object>> iterator = systemProperties.entrySet()
+				.iterator();
+		sysInfoData.clear();
+		while (iterator.hasNext()) {
+			Entry<Object, Object> entry = iterator.next();
+			SysInfoBean sysInfoBean = new SysInfoBean((String) entry.getKey(),
+					(String) entry.getValue());
+			sysInfoData.add(sysInfoBean);
+		}
+		progressBarSysInfo.setVisible(false);
 	}
 
 	/**
@@ -121,7 +179,8 @@ public class JNetController {
 	}
 
 	/**
-	 * @param appTitle the appTitle to set
+	 * @param appTitle
+	 *            the appTitle to set
 	 */
 	public final void setAppTitle(Label appTitle) {
 		this.appTitle = appTitle;
@@ -135,7 +194,8 @@ public class JNetController {
 	}
 
 	/**
-	 * @param txfIP_TCP the txfIP_TCP to set
+	 * @param txfIP_TCP
+	 *            the txfIP_TCP to set
 	 */
 	public final void setTxfIP_TCP(TextField txfIP_TCP) {
 		this.txfIP_TCP = txfIP_TCP;
@@ -149,7 +209,8 @@ public class JNetController {
 	}
 
 	/**
-	 * @param txfPort_TCP the txfPort_TCP to set
+	 * @param txfPort_TCP
+	 *            the txfPort_TCP to set
 	 */
 	public final void setTxfPort_TCP(TextField txfPort_TCP) {
 		this.txfPort_TCP = txfPort_TCP;
@@ -163,7 +224,8 @@ public class JNetController {
 	}
 
 	/**
-	 * @param txfMessage_TCP the txfMessage_TCP to set
+	 * @param txfMessage_TCP
+	 *            the txfMessage_TCP to set
 	 */
 	public final void setTxfMessage_TCP(TextField txfMessage_TCP) {
 		this.txfMessage_TCP = txfMessage_TCP;
@@ -177,7 +239,8 @@ public class JNetController {
 	}
 
 	/**
-	 * @param txaMessage_TCP the txaMessage_TCP to set
+	 * @param txaMessage_TCP
+	 *            the txaMessage_TCP to set
 	 */
 	public final void setTxaMessage_TCP(TextArea txaMessage_TCP) {
 		this.txaMessage_TCP = txaMessage_TCP;
@@ -191,7 +254,8 @@ public class JNetController {
 	}
 
 	/**
-	 * @param chbSocketMode_TCP the chbSocketMode_TCP to set
+	 * @param chbSocketMode_TCP
+	 *            the chbSocketMode_TCP to set
 	 */
 	public final void setChbSocketMode_TCP(ChoiceBox<JNetBean> chbSocketMode_TCP) {
 		this.chbSocketMode_TCP = chbSocketMode_TCP;
@@ -205,7 +269,8 @@ public class JNetController {
 	}
 
 	/**
-	 * @param txfIP_UDP the txfIP_UDP to set
+	 * @param txfIP_UDP
+	 *            the txfIP_UDP to set
 	 */
 	public final void setTxfIP_UDP(TextField txfIP_UDP) {
 		this.txfIP_UDP = txfIP_UDP;
@@ -219,7 +284,8 @@ public class JNetController {
 	}
 
 	/**
-	 * @param txfPort_UDP the txfPort_UDP to set
+	 * @param txfPort_UDP
+	 *            the txfPort_UDP to set
 	 */
 	public final void setTxfPort_UDP(TextField txfPort_UDP) {
 		this.txfPort_UDP = txfPort_UDP;
@@ -233,7 +299,8 @@ public class JNetController {
 	}
 
 	/**
-	 * @param txfMessage_UDP the txfMessage_UDP to set
+	 * @param txfMessage_UDP
+	 *            the txfMessage_UDP to set
 	 */
 	public final void setTxfMessage_UDP(TextField txfMessage_UDP) {
 		this.txfMessage_UDP = txfMessage_UDP;
@@ -247,7 +314,8 @@ public class JNetController {
 	}
 
 	/**
-	 * @param txaMessage_UDP the txaMessage_UDP to set
+	 * @param txaMessage_UDP
+	 *            the txaMessage_UDP to set
 	 */
 	public final void setTxaMessage_UDP(TextArea txaMessage_UDP) {
 		this.txaMessage_UDP = txaMessage_UDP;
@@ -261,7 +329,8 @@ public class JNetController {
 	}
 
 	/**
-	 * @param chbSocketMode_UDP the chbSocketMode_UDP to set
+	 * @param chbSocketMode_UDP
+	 *            the chbSocketMode_UDP to set
 	 */
 	public final void setChbSocketMode_UDP(ChoiceBox<String> chbSocketMode_UDP) {
 		this.chbSocketMode_UDP = chbSocketMode_UDP;
@@ -275,7 +344,8 @@ public class JNetController {
 	}
 
 	/**
-	 * @param rdbMulticast the rdbMulticast to set
+	 * @param rdbMulticast
+	 *            the rdbMulticast to set
 	 */
 	public final void setRdbMulticast(RadioButton rdbMulticast) {
 		this.rdbMulticast = rdbMulticast;
@@ -289,7 +359,8 @@ public class JNetController {
 	}
 
 	/**
-	 * @param rdbUnicast the rdbUnicast to set
+	 * @param rdbUnicast
+	 *            the rdbUnicast to set
 	 */
 	public final void setRdbUnicast(RadioButton rdbUnicast) {
 		this.rdbUnicast = rdbUnicast;
@@ -303,23 +374,26 @@ public class JNetController {
 	}
 
 	/**
-	 * @param progressBarNWInterface the progressBarNWInterface to set
+	 * @param progressBarNWInterface
+	 *            the progressBarNWInterface to set
 	 */
-	public final void setProgressBarNWInterface(ProgressBar progressBarNWInterface) {
+	public final void setProgressBarNWInterface(
+			ProgressBar progressBarNWInterface) {
 		this.progressBarNWInterface = progressBarNWInterface;
 	}
 
 	/**
 	 * @return the treViewNWInterface
 	 */
-	public final TreeView<JNetBean> getTreViewNWInterface() {
+	public final TreeView<String> getTreViewNWInterface() {
 		return treViewNWInterface;
 	}
 
 	/**
-	 * @param treViewNWInterface the treViewNWInterface to set
+	 * @param treViewNWInterface
+	 *            the treViewNWInterface to set
 	 */
-	public final void setTreViewNWInterface(TreeView<JNetBean> treViewNWInterface) {
+	public final void setTreViewNWInterface(TreeView<String> treViewNWInterface) {
 		this.treViewNWInterface = treViewNWInterface;
 	}
 
@@ -331,7 +405,8 @@ public class JNetController {
 	}
 
 	/**
-	 * @param progressBarSysInfo the progressBarSysInfo to set
+	 * @param progressBarSysInfo
+	 *            the progressBarSysInfo to set
 	 */
 	public final void setProgressBarSysInfo(ProgressBar progressBarSysInfo) {
 		this.progressBarSysInfo = progressBarSysInfo;
@@ -340,14 +415,15 @@ public class JNetController {
 	/**
 	 * @return the tblViewSysInfo
 	 */
-	public final TableView<JNetBean> getTblViewSysInfo() {
+	public final TableView<SysInfoBean> getTblViewSysInfo() {
 		return tblViewSysInfo;
 	}
 
 	/**
-	 * @param tblViewSysInfo the tblViewSysInfo to set
+	 * @param tblViewSysInfo
+	 *            the tblViewSysInfo to set
 	 */
-	public final void setTblViewSysInfo(TableView<JNetBean> tblViewSysInfo) {
+	public final void setTblViewSysInfo(TableView<SysInfoBean> tblViewSysInfo) {
 		this.tblViewSysInfo = tblViewSysInfo;
 	}
 
@@ -357,6 +433,5 @@ public class JNetController {
 	public final Stage getStage() {
 		return stage;
 	}
-	
-	
+
 }
