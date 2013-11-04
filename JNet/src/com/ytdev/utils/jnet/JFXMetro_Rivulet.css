@@ -1,0 +1,1600 @@
+/*
+*Copyright (c) 2013 Thirumalaivasan Rajasekaran.
+*All rights reserved. This program and the accompanying materials
+*are made available under the terms of the GNU Public License v3.0
+*which accompanies this distribution, and is available at
+*http://www.gnu.org/licenses/gpl.html
+*
+*Contributors:
+*    Thirumalaivasan Rajasekaran - initial API and implementation
+*/
+.root {     
+    display: block;
+    /*Application theme  color'*/
+    -fx-color-theme: #00ADA2;
+    /*Application backgound color*/
+    -fx-color-app-background: #FFFFFF;
+    /*Scroll bar and scroll pane track color*/
+    -fx-color-ash: #E7E7E7;
+    /*Default color for radio button,check box,text field,text area,custom text 
+    fields and password field*/
+    -fx-color-lightgrey: #B8B8B8;
+    /*Focused color for radio button and check box*/
+    -fx-color-grey: grey;
+    /*Hover color for radio button,check box,text field, text area, custom text 
+    field and password field*/
+    -fx-color-darkgrey: #696969;
+    /*Hover and Pressed color for buttons and Focused effects color text field, text area,
+    custom text fields, password field*/
+    -fx-color-arbablue: #009086;
+    /*Default color for textfill with light backgournd*/
+    -fx-color-texfill-light: #616161;
+    /*Default color for textfill with dark backgournd*/
+    -fx-color-textfill-dark: #FFFFFF;
+}
+
+/*******************************************************************************
+ *                                                                             *
+ * Label                                                                       *
+ *                                                                             *
+ ******************************************************************************/
+
+.label {
+    -fx-skin: "com.sun.javafx.scene.control.skin.LabelSkin";
+    -fx-text-fill: -fx-color-texfill-light;
+    -fx-font-family: Segoe UI;
+    -fx-font-size: 14
+}
+
+.label:disabled {
+    -fx-opacity: -fx-disabled-opacity;
+}
+
+.label:show-mnemonics .mnemonic-underline {
+    -fx-stroke: -fx-text-fill;
+} 
+
+/*******************************************************************************
+ *                                                                             *
+ * TextField                                                                   *
+ *                                                                             *
+ ******************************************************************************/
+
+.text-field {
+    -fx-background-color: -fx-color-app-background;
+    -fx-border-color: -fx-color-lightgrey;
+    -fx-border-width: 2;
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+    -fx-padding: 3 5 3 5;
+    -fx-text-fill: -fx-color-texfill-light;
+    -fx-font-family: Segoe UI;
+    -fx-font-size: 14;
+    -fx-prompt-text-fill: derive(-fx-color-texfill-light,70%);
+}
+
+.text-field:hover{
+    -fx-border-color: -fx-color-darkgrey;
+}
+
+.text-field:focused.text-field {
+    -fx-border-color:-fx-color-app-background;
+    -fx-effect: dropshadow(one-pass-box,-fx-color-arbablue,0,1.0,0,2);
+}
+
+.text-field:disabled {
+    -fx-opacity: -fx-disabled-opacity;
+}
+
+/*******************************************************************************
+ *                                                                             *
+ * PasswordField                                                               *
+ *                                                                             *
+ ******************************************************************************/
+
+.password-field {
+    -fx-text-fill: -fx-color-texfill-light;
+}
+
+.password-field:focused.password-field {
+    -fx-border-color: -fx-color-app-background;
+    -fx-effect: dropshadow(one-pass-box,-fx-color-arbablue,0,1.0,0,2);
+}
+/*******************************************************************************
+ *                                                                             *
+ * TextArea                                                                    *
+ *                                                                             *
+ ******************************************************************************/
+
+.text-area {
+    -fx-skin: "com.sun.javafx.scene.control.skin.TextAreaSkin";
+    -fx-border-color: -fx-color-lightgrey;
+    -fx-border-width: 2;
+    -fx-background-color: -fx-color-app-background;
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+    -fx-padding: 1;
+    -fx-text-fill: -fx-color-texfill-light;
+    -fx-font-family: Segoe UI;
+    -fx-font-size: 14;
+    -fx-prompt-text-fill: derive(-fx-color-texfill-light, 70%);
+}
+
+.text-area .scroll-pane {
+    -fx-background-color: transparent;
+}
+
+.text-area .content {
+    -fx-padding: 3 5 3 5; 
+    -fx-cursor: text;
+}
+
+.text-area:hover{
+    -fx-border-color: -fx-color-darkgrey;
+}
+.text-area:focused {
+    -fx-border-color:-fx-color-app-background;
+    -fx-background-color: -fx-color-app-background;
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+    -fx-prompt-text-fill: transparent;
+    -fx-effect: dropshadow(one-pass-box,-fx-color-arbablue,0,1.0,0,2);
+}
+
+.text-area:disabled {
+    -fx-opacity: -fx-disabled-opacity;
+}
+/*******************************************************************************
+ *                                                                             *
+ * Button                                                                      *
+ *                                                                             *
+ ******************************************************************************/
+
+.button {
+    -fx-background-color: -fx-color-theme;
+    -fx-border-color: -fx-color-theme;
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+    -fx-padding: 0.166667em 0.833333em 0.25em 0.833333em; /* 2 10 3 10 */
+    -fx-text-fill: -fx-color-textfill-dark;
+    -fx-font-family: Segoe UI;
+    -fx-font-size: 14;
+    -fx-alignment: CENTER;
+    -fx-content-display: LEFT;
+
+}
+
+.button:pressed {
+    -fx-background-color: -fx-color-arbablue;
+    -fx-border-color: -fx-color-arbablue;
+    -fx-translate-x:0.5;
+    -fx-translate-y:0.5;
+}
+
+.button:focused {
+    /*-fx-effect: dropshadow(one-pass-box,-fx-color-focused,1,1.0,-2,2);*/
+}
+
+.button:hover {
+    -fx-background-color: -fx-color-arbablue;
+    -fx-border-color: -fx-color-arbablue;
+}
+
+.button:armed {
+    -fx-background-color: -fx-color-arbablue;
+    -fx-border-color:-fx-color-arbablue;
+}
+
+.button:default {
+    -fx-base: -fx-accent;
+}
+
+.button:cancel {
+}
+
+.button:disabled {
+    -fx-opacity: -fx-disabled-opacity;
+}
+
+.button:show-mnemonics .mnemonic-underline {
+    -fx-stroke: -fx-text-fill;
+} 
+
+/*******************************************************************************
+ *                                                                             *
+ * RadioButton                                                                 *
+ *                                                                             *
+ ******************************************************************************/
+.radio-button {
+    -fx-text-fill: -fx-color-texfill-light;
+    -fx-font-family: Segoe UI;
+    -fx-font-size: 14
+}
+
+.radio-button .radio  {
+    -fx-background-color: -fx-color-app-background;
+    -fx-background-radius: 40; /* large value to make sure this remains circular */
+    -fx-border-color: -fx-color-lightgrey;
+    -fx-border-width: 2px;
+    -fx-border-radius: 20px;
+    -fx-padding: 3px; /* 4 -- padding from outside edge to the inner black dot */
+}
+
+.radio-button:focused.radio {
+    -fx-border-color: -fx-color-grey;
+}
+
+.radio-button:hover .radio {
+    -fx-border-color: -fx-color-darkgrey;
+
+}
+.radio-button:armed .radio {
+    -fx-border-color: -fx-color-lightgrey;
+    -fx-color: -fx-pressed-base;
+}
+
+.radio-button .dot {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-background-radius: 20px; /* large value to make sure this remains circular */
+    -fx-padding: 5px; /* 3 -- radius of the inner black dot when selected */
+}
+
+.radio-button:selected .dot {
+    -fx-background-color: -fx-color-theme;
+}
+
+.radio-button:disabled {
+    -fx-opacity: -fx-disabled-opacity;
+}
+
+
+/*******************************************************************************
+ *                                                                             *
+ * CheckBox                                                                    *
+ *                                                                             *
+ ******************************************************************************/
+.check-box{
+    -fx-text-fill: -fx-color-texfill-light;
+    -fx-font-family: Segoe UI;
+    -fx-font-size: 14
+
+}
+.check-box .box {
+    -fx-border-color: -fx-color-lightgrey;
+    -fx-border-width: 2px;
+    -fx-background-color: -fx-color-app-background;
+    -fx-background-insets: 10;
+    -fx-background-radius: 2px;
+    -fx-padding: 2px; /* 3 -- padding from the outside edge to the mark */
+}
+
+.check-box:focused.box {
+    -fx-background-insets: 10;
+    -fx-background-radius: 2px;
+    -fx-background-color: -fx-color-app-background;
+    -fx-border-color: -fx-color-grey;
+}
+
+.check-box:hover .box {
+    /*-fx-effect: dropshadow( one-pass-box , #FFB442 , 2, 1.0 , 0,0);*/
+    -fx-border-color: -fx-color-darkgrey;
+}
+
+.check-box:armed .box {
+    -fx-border-color: -fx-color-lightgrey;
+}
+
+.check-box .mark {
+    -fx-background-insets: 1 -1 -1 0, 0;
+    -fx-padding: 6px; /* 4 -- this is half the size of the mark */
+}
+
+/* TODO: scale the shape - the problem is that it is not within a square
+ * boundary.
+ */
+.check-box:indeterminate .mark {
+    -fx-background-color: -fx-color-theme;
+}
+
+.check-box:selected .mark {
+    -fx-background-color: -fx-color-theme;
+}
+
+.check-box:disabled {
+    -fx-opacity: -fx-disabled-opacity;
+}
+
+/*******************************************************************************
+ *                                                                             *
+ * ScrollBar                                                                   *
+ *                                                                             *
+ ******************************************************************************/
+
+.scroll-bar {
+    -fx-skin: "com.sun.javafx.scene.control.skin.ScrollBarSkin";
+}
+
+.scroll-bar:horizontal {
+    -fx-background-color: -fx-color-app-background;
+    /*-fx-background-insets: 0, 1;*/
+}
+
+.scroll-bar:horizontal:focused {
+    -fx-background-color:-fx-color-app-background;
+    -fx-background-insets: 0;
+}
+
+.scroll-bar:vertical {
+    -fx-background-color: -fx-color-app-background
+        /*-fx-background-insets: 0, 1;*/
+}
+
+.scroll-bar:vertical:focused {
+    -fx-background-color: -fx-color-app-background;
+}
+
+.scroll-bar:horizontal .thumb {  
+    -fx-background-color: -fx-color-darkgrey;
+    -fx-background-insets: -1;
+    -fx-background-radius: 0;
+}
+
+.scroll-bar:vertical .thumb {
+    -fx-background-color: -fx-color-darkgrey;
+    -fx-background-insets: -1;
+    -fx-background-radius: 0;
+}
+
+.scroll-bar:focused.thumb{
+    -fx-background-color: -fx-color-arbablue;
+}
+
+.scroll-bar .thumb:hover {
+    -fx-background-color: -fx-color-theme;
+}
+
+.scroll-bar .thumb:pressed {
+    -fx-background-color: -fx-color-theme;
+
+}
+
+/* Uncomment when RT-10521 is fixed.
+.scroll-bar .thumb:pressed {
+    -fx-color: -fx-pressed-base;
+}
+*/
+
+.scroll-bar:horizontal .track {
+    -fx-background-color: -fx-color-app-background;
+    -fx-background-insets: -1;
+    -fx-background-radius: 0;
+    -fx-effect: dropshadow(one-pass-box,-fx-color-ash,1,1.0,0,3);
+}
+
+.scroll-bar:horizontal .track-background {
+    -fx-background-color:-fx-color-app-background;
+    -fx-background-insets:  -1;
+}
+
+.scroll-bar:vertical .track {
+    -fx-background-color: -fx-color-app-background;
+    -fx-background-insets: -1;
+    -fx-background-radius: 0;
+    -fx-effect: dropshadow(one-pass-box,-fx-color-ash,1,1.0,3,0);
+}
+
+.scroll-bar:vertical .track-background {
+    -fx-background-color: -fx-color-app-background;
+    -fx-background-insets:  -1;
+}
+
+/*.scroll-bar .increment-button {
+    -fx-background-color: -fx-color-app-background;
+    -fx-background-insets:  -1;
+    -fx-padding: 0.25em;  3 
+}
+
+.scroll-bar .decrement-button {
+    -fx-background-color: -fx-color-app-background;
+    -fx-background-insets:  -1;
+    -fx-padding: 0.25em;  3 
+}*/
+
+/*h*/
+.scroll-bar:horizontal .increment-button {
+    -fx-background-color: -fx-color-app-background;
+    -fx-background-insets:  -1;
+    -fx-padding: 0.25em; /* 3 */
+    -fx-effect: dropshadow(one-pass-box,-fx-color-ash,1,1.0,0,3);
+}
+
+.scroll-bar:horizontal .decrement-button {
+    -fx-background-color: -fx-color-app-background;
+    -fx-background-insets:  -1;
+    -fx-padding: 0.25em; /* 3 */
+    -fx-effect: dropshadow(one-pass-box,-fx-color-ash,1,1.0,0,3);
+}
+/*v*/
+.scroll-bar:vertical .increment-button {
+    -fx-background-color: -fx-color-app-background;
+    -fx-background-insets:  -1;
+    -fx-padding: 0.25em; /* 3 */
+    -fx-effect: dropshadow(one-pass-box,-fx-color-ash,1,1.0,3,0);
+}
+
+.scroll-bar:vertical .decrement-button {
+    -fx-background-color: -fx-color-app-background;
+    -fx-background-insets:  -1;
+    -fx-padding: 0.25em; /* 3 */
+    -fx-effect: dropshadow(one-pass-box,-fx-color-ash,1,1.0,3,0);
+}
+
+.scroll-bar:horizontal .increment-arrow {
+    -fx-background-color: -fx-color-darkgrey;
+    -fx-background-insets: 1 0 -1 0, 0;
+    -fx-padding: 0.5em 0.333333em 0.0em 0.0em; /* 6 4 0 0 */
+    -fx-shape: "M 4 0 L 0 -3 L 0 3 z";
+}
+
+.scroll-bar:vertical .increment-arrow {
+    -fx-background-color: -fx-color-darkgrey;
+    -fx-background-insets: 1 0 -1 0, 0;
+    -fx-padding: 0.333333em 0.5em 0.0em 0.0em; /* 4 6 0 0 */
+    -fx-shape: "M -3 0 L 0 4 L 3 0 z";
+}
+
+.scroll-bar:horizontal .decrement-arrow {
+    -fx-background-color: -fx-color-darkgrey;
+    -fx-background-insets: 1 0 -1 0, 0;
+    -fx-padding: 0.5em 0.333333em 0.0em 0.0em; /* 6 4 0 0 */
+    -fx-shape: "M 0 0 L 4 -3 L 4 3 z";
+}
+
+.scroll-bar:vertical .decrement-arrow {
+    -fx-background-color: -fx-color-darkgrey;
+    -fx-background-insets: 1 0 -1 0, 0;
+    -fx-padding: 0.333333em 0.5em 0.0em 0.0em; /* 4 6 0 0 */
+    -fx-shape: "M -3 0 L 0 -4 L 3 0 z";
+}
+
+.scroll-bar:horizontal .increment-arrow:hover {
+    -fx-background-color: -fx-color-theme;
+    -fx-background-insets: 1 0 -1 0, 0;
+    -fx-padding: 0.5em 0.333333em 0.0em 0.0em; /* 6 4 0 0 */
+}
+
+.scroll-bar:vertical .increment-arrow:hover {
+    -fx-background-color: -fx-color-theme;
+    -fx-background-insets: 1 0 -1 0, 0;
+    -fx-padding: 0.333333em 0.5em 0.0em 0.0em; /* 4 6 0 0 */
+}
+
+.scroll-bar:horizontal .decrement-arrow:hover {
+    -fx-background-color: -fx-color-theme;
+    -fx-background-insets: 1 0 -1 0, 0;
+    -fx-padding: 0.5em 0.333333em 0.0em 0.0em; /* 6 4 0 0 */
+}
+
+.scroll-bar:vertical .decrement-arrow:hover {
+    -fx-background-color: -fx-color-theme;
+    -fx-background-insets: 1 0 -1 0, 0;
+    -fx-padding: 0.333333em 0.5em 0.0em 0.0em; /* 4 6 0 0 */
+}
+
+.scroll-bar:horizontal .increment-arrow:pressed {
+    -fx-translate-x:0.5;
+    -fx-translate-y:0.5;
+    -fx-background-insets: 1 0 -1 0, 0;
+    -fx-padding: 0.5em 0.333333em 0.0em 0.0em; /* 6 4 0 0 */
+}
+
+.scroll-bar:vertical .increment-arrow:pressed {
+    -fx-translate-x:0.5;
+    -fx-translate-y:0.5;
+    -fx-background-insets: 1 0 -1 0, 0;
+    -fx-padding: 0.333333em 0.5em 0.0em 0.0em; /* 4 6 0 0 */
+}
+
+.scroll-bar:horizontal .decrement-arrow:pressed {
+    -fx-translate-x:0.5;
+    -fx-translate-y:0.5;
+    -fx-background-insets: 1 0 -1 0, 0;
+    -fx-padding: 0.5em 0.333333em 0.0em 0.0em; /* 6 4 0 0 */
+}
+
+.scroll-bar:vertical .decrement-arrow:pressed {
+    -fx-translate-x:0.5;
+    -fx-translate-y:0.5;
+    -fx-background-insets: 1 0 -1 0, 0;
+    -fx-padding: 0.333333em 0.5em 0.0em 0.0em; /* 4 6 0 0 */
+}
+
+.scroll-bar:disabled {
+    -fx-opacity: -fx-disabled-opacity;
+}
+
+/* The opacity of the parent is applied to the children.  So we make the
+ * opacity 1.0 here to avoid double translucency.
+ */
+/*:disabled > * > .scroll-bar {
+    -fx-opacity: 1.0;
+}*/
+
+/*******************************************************************************
+ *                                                                             *
+ * ScrollPane                                                                  *
+ *                                                                             *
+ ******************************************************************************/
+
+.scroll-pane {
+    -fx-skin: "com.sun.javafx.scene.control.skin.ScrollPaneSkin";
+    /*If need default application background set the derive percentage to zero*/
+    -fx-background-color: derive(-fx-color-app-background,0%);
+    -fx-background-insets: 0;
+    -fx-padding: 1.0;
+}
+
+.scroll-pane:focused {
+    -fx-background-insets: 0;
+}
+
+.scroll-pane > * > .scroll-bar:horizontal {
+    -fx-background-insets: 0, 1 0 0 0;
+    -fx-padding: 0.0 0.0 0.0 0.0;
+}
+
+.scroll-pane > * > .scroll-bar:vertical {
+    -fx-background-insets: 0, 0 0 0 1;
+    -fx-padding: 0.0 0.0 0.0 0.0;
+}
+
+.scroll-pane .corner {
+    -fx-background-color: -fx-color-app-background;
+    -fx-background-insets: 0, 1 0 0 1;
+}
+
+.scroll-pane:disabled {
+    -fx-opacity: -fx-disabled-opacity;
+}
+
+/*******************************************************************************
+ *                                                                             *
+ * Customised CSS for controls placed directly within cells                    *
+ *                                                                             *
+ ******************************************************************************/
+
+.cell .choice-box {
+    -fx-border-color: -fx-color-darkgrey;
+    -fx-border-width: 2;
+    -fx-background-color: -fx-color-app-background;
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+    -fx-padding: 0.0em 0.5em 0.0em 0.0em; /* 0 6 0 0 */
+    -fx-alignment: CENTER_LEFT;
+    -fx-content-display: LEFT;
+}
+
+.cell .choice-box .label {
+    -fx-padding: 0em 0.333333em 0.0em 0.333333; /* 2 4 3 6 */
+}
+
+.cell:focused:selected .choice-box .label {
+    -fx-text-fill: -fx-color-textfill-dark;
+}
+
+.cell:focused:selected .choice-box .arrow {
+    -fx-background-color: -fx-color-theme;
+}
+
+
+/*******************************************************************************
+ *                                                                             *
+ * PopupMenu                                                                   *
+ *                                                                             *
+ ******************************************************************************/
+
+.context-menu {
+    -fx-skin: "com.sun.javafx.scene.control.skin.ContextMenuSkin";
+    -fx-background-color:-fx-color-app-background;
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+    -fx-border-color: -fx-color-darkgrey;
+/*    -fx-padding: 0.666667em 0.083333em 0.666667em 0.083333em;  8 1 8 1 */
+    -fx-padding: 0.333333em 0.083333em 0.666667em 0.083333em; /* 4 1 8 1 */
+    -fx-text-fill: -fx-color-texfill-light;
+}
+
+.context-menu .separator {
+    -fx-padding: 0.0em 0.333333em 0.0em 0.333333em; /* 0 4 0 4 */
+    -fx-background-color: -fx-color-lightgrey;
+}
+
+.context-menu .scroll-arrow {
+    -fx-padding: 0.416667em 0.416667em 0.416667em 0.416667em; /* 5 */
+}
+
+.context-menu .scroll-arrow:hover {
+    -fx-background: orange;
+    -fx-background-color: orange;
+    -fx-text-fill: -fx-selection-bar-text;
+}
+
+.context-menu:show-mnemonics .mnemonic-underline {
+    -fx-stroke: -fx-text-fill;
+} 
+
+
+/*******************************************************************************
+ *                                                                             *
+ * Menu                                                                        *
+ *                                                                             *
+ ******************************************************************************/
+
+.menu {
+/*    -fx-skin: "com.sun.javafx.scene.control.skin.MenuSkin";*/
+    -fx-background-color: transparent;
+    -fx-padding: 0.333333em 0.666667em 0.333333em 0.666667em; /* 4 8 4 8 */
+}
+
+.menu:disabled {
+    -fx-opacity: -fx-disabled-opacity;
+}
+
+.menu:show-mnemonics .mnemonic-underline {
+    -fx-stroke: -fx-text-fill;
+}
+
+/* This hides the down arrow that would show on a menu placed in a menubar */
+.menu-bar .menu .arrow {
+    -fx-padding: 0;
+    -fx-background-color: transparent;
+    -fx-shape: null;
+}
+
+.menu-bar .menu .arrow-button {
+    -fx-padding: 0;
+}
+
+.menu .arrow {
+    -fx-background-color: -fx-mark-color;
+    -fx-shape: "M0,-4L4,0L0,4Z";
+    -fx-scale-shape: false;
+}
+
+.menu:focused:showing .arrow, .menu:hover:showing .arrow, .menu:focused .arrow, .menu:showing .arrow {
+    -fx-background-color: white;
+}
+
+.menu-up-arrow {
+    -fx-padding: 0.666667em 0.416667em 0.0em 0.416667em;  /* 8 5 0 5 */
+    -fx-background-color: derive(-fx-color,-2%);
+    -fx-shape: "M0 1 L1 1 L.5 0 Z";
+    -fx-effect: innershadow( two-pass-box , rgba(0,0,0,0.6) , 4, 0.0 , 0 , 1 );
+}
+
+.menu-down-arrow {
+    -fx-background-color: derive(-fx-color,-2%);
+    -fx-padding: 0.666667em 0.416667em 0.0em 0.416667em;  /* 8 5 0 5 */
+    -fx-shape: "M0 0 L1 0 L.5 1 Z";
+    -fx-effect: innershadow( two-pass-box , rgba(0,0,0,0.6) , 4, 0.0 , 0 , 1 );
+}
+
+
+/*******************************************************************************
+ *                                                                             *
+ * MenuBar                                                                     *
+ *                                                                             *
+ ******************************************************************************/
+
+/* Corresponding hex values for the color derivations used below are: *
+ * derive(-fx-base,-30%); #929292                                     *
+ * derive(-fx-base,-50%); #686868                                     *
+ * derive(-fx-base,-70%); #3e3e3e                                     */
+
+.menu-bar {
+    -fx-skin: "com.sun.javafx.scene.control.skin.MenuBarSkin";
+    -fx-padding: 0.0em 0.666667em 0.0em 0.666667em; /* 0 8 0 8 */
+    -fx-spacing: 0.166667em; /* 2 */
+    -fx-base: derive(#d0d0d0,-70%);
+    -fx-background-color: linear-gradient(to bottom, derive(-fx-color,50%), derive(-fx-color,-30%)), -fx-body-color;
+    -fx-background-insets: 0, 1 0 1 0;
+    -fx-background-radius: 0, 0 ;
+}
+
+/* Show nothing for background of normal menu button in a menu bar */
+.menu-bar .menu-button {
+    -fx-background-radius: 0;
+    -fx-background-color: transparent;
+    -fx-background-insets: 0; 
+}
+/* Change padding of menu buttons when in menu bar */
+.menu-bar .menu-button .label {
+    -fx-padding: 0.333em 0.5em 0.333em 0.5em; /* 4 6 4 6*/
+}
+
+.menu-bar .menu-button:hover, .menu-bar .menu-button:focused, .menu-bar .menu-button:showing {
+    -fx-background: -fx-accent;
+    -fx-background-color: -fx-selection-bar;
+    -fx-text-fill: -fx-selection-bar-text;
+}
+
+/*.menu-bar .menu:focused:showing, .menu-bar .menu:showing, .menu-bar .menu:focused, .menu:focused:showing, .menu:showing, .menu:focused {*/
+/*.menu-bar .menu-button:showing, .menu-button:showing {
+    -fx-background: -fx-accent;
+    -fx-background-color: -fx-selection-bar;
+    -fx-text-fill: -fx-selection-bar-text;
+}*/
+
+.menu-bar .menu-button:hover {
+    -fx-background: -fx-accent;
+    -fx-background-color: -fx-selection-bar;
+    -fx-text-fill: -fx-selection-bar-text;
+}
+
+.menu-bar:show-mnemonics .mnemonic-underline {
+    -fx-stroke: -fx-text-fill;
+}
+
+/*******************************************************************************
+ *                                                                             *
+ * MenuItem                                                                    *
+ *                                                                             *
+ ******************************************************************************/
+
+.menu-item {
+/*    -fx-skin: "com.sun.javafx.scene.control.skin.MenuItemSkin";*/
+    -fx-background-color: transparent;
+    -fx-padding: 0.333333em 0.41777em 0.333333em 0.41777em;  /* 4 5 4 5 */
+}
+
+.menu-item .left-container {
+    -fx-padding: 0.458em 0.791em 0.458em 0.458em;
+}
+
+.menu-item .graphic-container {
+    -fx-padding: 0em 0.333em 0em 0em;
+}
+
+.menu-item .label {
+    -fx-padding: 0em 0.5em 0em 0em;
+    -fx-text-fill: -fx-text-base-color;
+}
+
+.menu-item:disabled .label {
+    -fx-opacity: -fx-disabled-opacity;
+}
+
+.menu-item:focused {
+     -fx-background: -fx-accent;
+     -fx-background-color: -fx-color-theme;
+     -fx-text-fill: -fx-color-textfill-dark;
+}
+
+.menu-item:focused .label {
+    -fx-text-fill: white;
+}
+.menu-item .right-container {
+    -fx-padding: 0em 0em 0em 0.5em;
+}
+
+.menu-item:show-mnemonics .mnemonic-underline {
+    -fx-stroke: -fx-text-fill;
+} 
+
+.radio-menu-item:checked .radio {
+    -fx-background-color: -fx-mark-color;
+    -fx-shape: "M0,5H2L4,8L8,0H10L5,10H3Z";
+    -fx-scale-shape: false;
+}
+
+.radio-menu-item:focused:checked .radio {
+    -fx-background-color: white;
+}
+
+.check-menu-item:checked .check {
+    -fx-background-color: -fx-mark-color;
+    -fx-shape: "M0,5H2L4,8L8,0H10L5,10H3Z";
+    -fx-scale-shape: false;
+}
+
+.check-menu-item:focused:checked .check {
+    -fx-background-color: white;
+}
+
+.menu .arrow {
+    -fx-padding: 0.458em 0.167em 0.458em 0.167em; /* 4.5 2 4.5 2 */
+    -fx-background-color: -fx-mark-color;
+    -fx-shape: "M0,-4L4,0L0,4Z";
+    -fx-scale-shape: false;
+}
+
+.menu:selected .arrow {
+    -fx-background-color: white;
+}
+/*.radio.selected {
+    -fx-background-color: -fx-mark-color;
+    -fx-padding: 0.666667em;  8
+    -fx-shape: "M7,3.5C7,5.433,5.433,7,3.5,7C1.567,7,0,5.433,0,3.5C0,1.567,1.63,0,3.5,0C5.433,0,7,1.567,7,3.5z";
+    -fx-scale-shape: false; 
+}*/
+
+/*.check.checked {
+    -fx-background-color: -fx-mark-color;
+    -fx-padding: 0.666667em;  8
+    -fx-shape: "M0,5H2L4,8L8,0H10L5,10H3Z";
+    -fx-scale-shape: false;
+}*/
+
+/*
+.menu-item:hover:selected .menu-item-check, .menu-item:focused:selected .menu-item-check,.menu-item:hover:selected .menu-item-radio, .menu-item:focused:selected .menu-item-radio {
+    -fx-background-color: -fx-selection-bar-text;
+}
+*/
+.menu-item:disabled {
+    -fx-opacity: -fx-disabled-opacity;
+}
+
+/*******************************************************************************
+ *                                                                             *
+ * ChoiceBox                                                                   *
+ *                                                                             *
+ ******************************************************************************/
+
+.choice-box {
+    -fx-skin: "com.sun.javafx.scene.control.skin.ChoiceBoxSkin";
+    -fx-border-color: -fx-color-lightgrey;
+    -fx-border-width: 2;
+    -fx-background-color: -fx-color-app-background;
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+    -fx-padding: 0.0em 0.5em 0.0em 0.0em; /* 0 6 0 0 */
+    -fx-alignment: CENTER;
+    -fx-content-display: LEFT;
+}
+
+.choice-box:focused {
+    -fx-border-color: -fx-color-darkgrey
+}
+
+.choice-box:hover {
+    -fx-border-color: -fx-color-darkgrey;
+}
+
+.choice-box:showing {
+    -fx-color: -fx-pressed-base;
+}
+
+.choice-box .label {
+    -fx-padding: 0.166667em 0.333333em 0.25em 0.5em; /* 2 4 3 6 */
+    -fx-text-fill: -fx-color-texfill-light;
+}
+
+.choice-box .open-button {
+    -fx-background-color: null;
+    -fx-padding: 0.083333em 0.0em 0.0em 0.666667em; /* 1 0 0 8 */
+}
+
+.choice-box .arrow {
+    -fx-background-insets: 1 0 -1 0, 0;
+    /* padding determines the size of the arrow;
+       this should match the design size in the SVG */
+    -fx-padding: 0.166667em 0.333333em 0.166667em 0.333333em; /* 2 3.5 2 3.5 */
+    -fx-shape: "M 0 0 h 7 l -3.5 4 z";
+    -fx-background-color: -fx-color-darkgrey;
+}
+
+.choice-box:focused:arrow {
+    -fx-background-color: -fx-color-theme;
+}
+
+
+.choice-box .context-menu {
+    -fx-background-radius: 0;
+}
+
+.choice-box .menu-item {
+    -fx-accelerator-gutter: 0;
+}
+
+/* TODO: need to use the ID here.  For some reason, the other form does not
+ * work.  This might be related to popup issues.
+ */
+/*.choice-box > * > .menu-item-radio {*/
+#choice-box-menu-item > * > .menu-item-radio {
+    /* When we show RadioMenuItems in ChoiceBox, we replace the radio shape with
+       a check mark, which looks much better */
+    -fx-shape: "M0,5H2L4,8L8,0H10L5,10H3Z";
+    -fx-scale-shape: false;
+}
+
+.choice-box:disabled {
+    -fx-opacity: -fx-disabled-opacity;
+}
+
+
+
+/*******************************************************************************
+ *                                                                             *
+ * ListView and ListCell                                                       *
+ *                                                                             *
+ ******************************************************************************/
+
+.list-view {
+    -fx-skin: "com.sun.javafx.scene.control.skin.ListViewSkin";
+    -fx-background-color: -fx-box-border, -fx-control-inner-background;
+    -fx-background-insets: 0, 1;
+
+    /* There is some oddness if padding is in em values rather than pixels,
+       in particular, the left border of the control doesn't show. */
+    -fx-padding: 1; /* 0.083333em; */
+}
+
+.list-view:focused {
+    -fx-background-color: -fx-focus-color,-fx-box-border,-fx-control-inner-background;
+    -fx-background-insets: -1.4, 0, 1;
+    -fx-background-radius: 1.4, 0, 0;
+
+    /* There is some oddness if padding is in em values rather than pixels,
+       in particular, the left border of the control doesn't show. */
+    -fx-padding: 1; /* 0.083333em; */
+}
+
+.list-view .scroll-bar:vertical{
+    -fx-background-insets: 0, 0 0 0 1;
+    -fx-padding: 0.0 0.0 0.0 0.0;
+}
+
+.list-view .scroll-bar:horizontal{
+    -fx-background-insets: 0, 1 0 0 0;
+    -fx-padding: 0.0 0.0 0.0 0.0;
+}
+
+.list-view:disabled {
+    -fx-opacity: -fx-disabled-opacity;
+}
+
+.list-view .corner {
+    -fx-background-color: -fx-box-border, -fx-base;
+    -fx-background-insets: 0, 1 0 0 1;
+}
+
+.list-cell {
+    -fx-skin: "com.sun.javafx.scene.control.skin.ListCellSkin";
+    -fx-background-color: -fx-control-inner-background;
+    -fx-padding: 0.25em; /* 3 */
+    -fx-text-fill: -fx-text-inner-color;
+    -fx-opacity: 1;
+}
+
+.list-cell:odd {
+    -fx-background-color: derive(-fx-control-inner-background,-5%);
+}
+
+.list-view:focused .list-cell:focused {
+    -fx-background-color: -fx-focus-color, -fx-cell-focus-inner-border, -fx-control-inner-background;
+    -fx-background-insets: 0, 1, 2;
+}
+
+.list-view:focused .list-cell:focused:odd {
+    -fx-background-color: -fx-focus-color, -fx-cell-focus-inner-border, derive(-fx-control-inner-background,-5%);
+    -fx-background-insets: 0, 1, 2;
+}
+
+/* When the list-cell is selected and focused */
+.list-view:focused .list-cell:filled:focused:selected {
+    -fx-background-color: -fx-focus-color, -fx-cell-focus-inner-border, -fx-selection-bar;
+    -fx-background-insets: 0, 1, 2;
+    -fx-background: -fx-accent;
+    -fx-text-fill: -fx-selection-bar-text;
+}
+
+.list-view:focused .list-cell:filled:selected, .list-view:focused .list-cell:filled:selected:hover {
+    -fx-background: -fx-accent;
+    -fx-background-color: -fx-selection-bar;
+    -fx-text-fill: -fx-selection-bar-text;
+}
+
+.list-view:focused .list-cell:filled:focused:selected:hover {
+    -fx-background: -fx-accent;
+    -fx-background-color: -fx-focus-color, -fx-cell-focus-inner-border, -fx-selection-bar;
+    -fx-background-insets: 0, 1, 2;
+    -fx-text-fill: -fx-selection-bar-text;
+}
+
+/* When the ListView is _not_ focused, we show alternate selection colors */
+.list-cell:filled:selected:focused, .list-cell:filled:selected, .list-view:horizontal .list-cell:filled:selected {
+    -fx-background-color: lightgray;
+    -fx-text-fill: -fx-selection-bar-text;
+}
+
+.list-cell:filled:selected:focused:disabled, .list-cell:filled:selected:disabled {
+    -fx-opacity: -fx-disabled-opacity;
+}
+
+.list-cell:filled:hover {
+    -fx-background-color: -fx-cell-hover-color;
+    -fx-text-fill: -fx-text-inner-color;
+}
+
+.list-view:focused .list-cell:filled:focused:hover {
+    -fx-background-color: -fx-focus-color, -fx-cell-focus-inner-border, -fx-cell-hover-color;
+    -fx-background-insets: 0, 1, 2;
+    -fx-text-fill: -fx-text-inner-color;
+}
+
+.list-view:horizontal .list-cell:filled:selected, .list-view:horizontal .list-cell:filled:selected:hover {
+    -fx-background-color: linear-gradient(to right, derive(-fx-accent,-7%), derive(-fx-accent,-25%));
+}
+
+/*******************************************************************************
+ *                                                                             *
+ * TreeView and TreeCell                                                       *
+ *                                                                             *
+ ******************************************************************************/
+
+.tree-view {
+    -fx-skin: "com.sun.javafx.scene.control.skin.TreeViewSkin";
+    -fx-background-color: -fx-box-border, -fx-control-inner-background;
+    -fx-background-insets: 0, 1;
+
+    /* There is some oddness if padding is in em values rather than pixels,
+       in particular, the left border of the control doesn't show. */
+    -fx-padding: 1; /* 0.083333em; */
+}
+
+.tree-view:focused {
+    -fx-background-color: -fx-focus-color,-fx-box-border,-fx-control-inner-background;
+    -fx-background-insets: -1.4, 0, 1;
+    -fx-background-radius: 1.4, 0, 0;
+
+    /* There is some oddness if padding is in em values rather than pixels,
+       in particular, the left border of the control doesn't show. */
+    -fx-padding: 1; /* 0.083333em; */
+}
+
+.tree-view .scroll-bar:vertical{
+    -fx-background-insets: 0, 0 0 0 1;
+    -fx-padding: 0.0 0.0 0.0 0.0;
+}
+
+.tree-view .scroll-bar:horizontal{
+    -fx-background-insets: 0, 1 0 0 0;
+    -fx-padding: 0.0 0.0 0.0 0.0;
+}
+
+.tree-view:disabled {
+    -fx-opacity: -fx-disabled-opacity;
+}
+
+.tree-view .corner {
+    -fx-background-color: -fx-box-border, -fx-base;
+    -fx-background-insets: 0, 1 0 0 1;
+}
+
+.tree-cell {
+    -fx-skin: "com.sun.javafx.scene.control.skin.TreeCellSkin";
+    -fx-background-color: -fx-control-inner-background;
+    -fx-padding: 0.25em; /* 3 */
+    -fx-text-fill: -fx-text-inner-color;
+    -fx-indent: 10;
+}
+
+.tree-cell .label {
+    -fx-padding: 0.0em 0.0em 0.0em 0.25em; /* 0 0 0 3 */
+}
+
+
+
+.tree-view:focused .tree-cell:focused {
+    -fx-background-color: -fx-focus-color, -fx-cell-focus-inner-border, -fx-control-inner-background;
+    -fx-background-insets: 0, 1, 2;
+}
+
+.tree-view:focused .tree-cell:filled:focused:selected {
+    -fx-background-color: -fx-focus-color, -fx-cell-focus-inner-border, -fx-selection-bar;
+    -fx-background-insets: 0, 1, 2;
+    -fx-background: -fx-accent;
+    -fx-text-fill: -fx-selection-bar-text;
+}
+
+.tree-view:focused .tree-cell:filled:selected, .tree-view:focused .tree-cell:filled:selected:hover {
+    -fx-background: -fx-accent;
+    -fx-background-color: -fx-selection-bar;
+    -fx-text-fill: -fx-selection-bar-text;
+}
+
+.tree-view:focused .tree-cell:filled:focused:selected:hover {
+    -fx-background: -fx-accent;
+    -fx-background-color: -fx-focus-color, -fx-cell-focus-inner-border, -fx-selection-bar;
+    -fx-background-insets: 0, 1, 2;
+    -fx-text-fill: -fx-selection-bar-text;
+}
+
+/* When the TreeView is _not_ focused, we show alternate selection colors */
+.tree-cell:filled:selected:focused, .tree-cell:filled:selected {
+    -fx-background-color: lightgray;
+    -fx-text-fill: -fx-selection-bar-text;
+}
+
+.tree-cell:filled:selected:focused:disabled, .tree-cell:filled:selected:disabled {
+    -fx-opacity: -fx-disabled-opacity;
+}
+
+.tree-cell .tree-disclosure-node {
+    /** put a bit of padding around the disclosure node to make the clicking region larger */
+    -fx-padding: 4 2 4 8;
+    -fx-background-color: transparent;
+}
+
+.tree-cell .tree-disclosure-node:disabled {
+    -fx-opacity: -fx-disabled-opacity;
+}
+
+.tree-cell .tree-disclosure-node .arrow {
+    -fx-background-color: -fx-mark-color;
+    -fx-padding: 0.333333em; /* 4 */
+    -fx-shape: "M 0 -4 L 8 0 L 0 4 z";
+}
+
+.tree-cell:expanded .tree-disclosure-node .arrow {
+    -fx-rotate: 90;
+}
+
+.tree-cell:filled:selected .tree-disclosure-node .arrow {
+    -fx-background-color: -fx-selection-bar-text;
+}
+
+.tree-cell:filled:hover {
+    -fx-background-color: -fx-cell-hover-color;
+    -fx-text-fill: -fx-text-inner-color;
+}
+
+.tree-cell:filled:hover .tree-disclosure-node .arrow {
+    -fx-background-color: -fx-mark-color;
+}
+
+.tree-view:focused .tree-cell:filled:focused:hover {
+    -fx-background-color: -fx-focus-color, -fx-cell-focus-inner-border, -fx-cell-hover-color;
+    -fx-background-insets: 0, 1, 2;
+    -fx-text-fill: -fx-text-inner-color;
+}
+
+.tree-cell:filled:selected:hover .tree-disclosure-node .arrow {
+    -fx-background-color: -fx-selection-bar-text;
+}
+
+/*******************************************************************************
+ *                                                                             *
+ * TableView                                                                   *
+ *                                                                             *
+ ******************************************************************************/
+
+.table-view {
+    -fx-skin: "com.sun.javafx.scene.control.skin.TableViewSkin";
+    -fx-background-color: -fx-box-border, -fx-control-inner-background;
+    -fx-background-insets: 0,1;
+
+    /* There is some oddness if padding is in em values rather than pixels,
+       in particular, the left border of the control doesn't show. */
+    -fx-padding: 1; /* 0.083333em; */
+
+    /* Constants used throughout the tableview.
+     * TODO: Should these be derived from the palette in .scene?
+     */
+    -fx-table-header-border-color: #959595;
+    /*    -fx-table-header-background-color: linear (0%,0%) to (0%,100%) stops (80%, #bbbbbb) (10%, #f6f6f6);*/
+    -fx-table-cell-border-color: #bbbbbb;
+}
+
+/** Draws focus border around tableview */
+.table-view:focused {
+    -fx-background-color: -fx-focus-color,-fx-box-border,-fx-control-inner-background;
+    -fx-background-insets: -1.4, 0, 1;
+    -fx-background-radius: 1.4, 0, 0;
+
+    /* There is some oddness if padding is in em values rather than pixels,
+       in particular, the left border of the control doesn't show. */
+    -fx-padding: 1; /* 0.083333em; */
+}
+
+.table-view:disabled {
+    -fx-opacity: -fx-disabled-opacity;
+}
+
+.table-view .scroll-bar:vertical{
+    -fx-background-insets: 0, 0 0 0 1;
+    -fx-padding: 0.0 0.0 0.0 0.0;
+}
+
+.table-view .scroll-bar:horizontal{
+    -fx-background-insets: 0, 1 0 0 0;
+    -fx-padding: 0.0 0.0 0.0 0.0;
+}
+
+.table-view .corner {
+    -fx-background-color: -fx-box-border, -fx-base;
+    -fx-background-insets: 0, 1 0 0 1;
+}
+
+/* Each row in the table is a table-row-cell. Inside a table-row-cell is any
+   number of table-cell. */
+.table-row-cell {
+    -fx-skin: "com.sun.javafx.scene.control.skin.TableRowSkin";
+    -fx-background-color: -fx-table-cell-border-color, -fx-control-inner-background;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em; /* 0 */
+    -fx-text-fill: -fx-text-inner-color;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: -fx-table-cell-border-color, derive(-fx-control-inner-background,-5%);
+    -fx-background-insets: 0, 0 0 1 0;
+}
+
+.table-row-cell:focused {
+    -fx-background-color: -fx-focus-color, -fx-cell-focus-inner-border, -fx-control-inner-background;
+    -fx-background-insets: 0, 1, 2;
+}
+
+.table-row-cell:focused:odd {
+    -fx-background-color: -fx-focus-color, -fx-cell-focus-inner-border, derive(-fx-control-inner-background,-5%);
+    -fx-background-insets: 0, 1, 2;
+}
+
+/* When the table-row-cell is selected and focused */
+.table-view:focused .table-row-cell:filled:focused:selected {
+    -fx-background-color: -fx-focus-color, -fx-cell-focus-inner-border, -fx-selection-bar;
+    -fx-background-insets: 0, 1, 2;
+    -fx-background: -fx-accent;
+    -fx-text-fill: -fx-selection-bar-text;
+}
+
+.table-view:focused .table-row-cell:filled:selected .table-cell {
+    -fx-text-fill: -fx-selection-bar-text;
+}
+
+.table-view:focused .table-row-cell:filled:selected, .table-view:row-selection .table-row-cell:filled:hover:selected {
+    -fx-background: -fx-accent;
+    -fx-background-color: -fx-selection-bar;
+    -fx-text-fill: -fx-selection-bar-text;
+}
+
+.table-view:focused .table-row-cell:filled:focused:selected:hover {
+    -fx-background: -fx-accent;
+    -fx-background-color: -fx-focus-color, -fx-cell-focus-inner-border, -fx-selection-bar;
+    -fx-background-insets: 0, 1, 2;
+    -fx-text-fill: -fx-selection-bar-text;
+}
+
+/* When the TableView is _not_ focused, we show alternate selection colors */
+.table-row-cell:filled:selected:focused, .table-row-cell:filled:selected {
+    -fx-background-color: lightgray;
+    -fx-text-fill: -fx-selection-bar-text;
+}
+
+.table-row-cell:selected:disabled {
+    -fx-opacity: -fx-disabled-opacity;
+}
+
+.table-view:row-selection .table-row-cell:filled:hover { 
+    -fx-background-color: -fx-table-cell-border-color, -fx-cell-hover-color;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-text-fill: -fx-text-inner-color;
+}
+
+.table-view:row-selection .table-row-cell:filled:focused:hover { 
+    -fx-background-color: -fx-table-cell-border-color, -fx-focus-color, -fx-cell-focus-inner-border, -fx-cell-hover-color;
+    -fx-background-insets: 0, 0 0 1 0, 1 1 2 1, 2 2 3 2, 3 3 4 3;
+    -fx-text-fill: -fx-text-inner-color;
+}
+
+.table-cell {
+    -fx-skin: "com.sun.javafx.scene.control.skin.TableCellSkin";
+    -fx-padding: 0.166667em; /* 2px, plus border adds 1px */
+
+    -fx-background-color: transparent;
+    -fx-border-color: transparent -fx-table-cell-border-color transparent transparent;
+    -fx-border-width: 0.083333em; /* 1 */
+    -fx-cell-size: 2.0em; /* 24 */
+    -fx-text-fill: -fx-text-inner-color;
+}
+
+/* When in constrained resize mode, the right-most visible cell should not have
+   a right-border, as it is not possible to get this cleanly out of view without
+   introducing horizontal scrollbars (see RT-14886). */
+.table-view:constrained-resize .table-cell:last-visible {
+    -fx-border-color: transparent;
+}
+.table-view:constrained-resize .column-header:last-visible {
+    -fx-border-width: 0.083333em 0.0em 0.083333em 0.083333em, 0.083333em 0.0em 0.083333em 0.083333em;
+}
+.table-view:constrained-resize .filler {
+    -fx-border-color: 
+        derive(-fx-base, 80%) 
+        linear-gradient(to bottom, derive(-fx-base,80%) 20%, derive(-fx-base,-10%) 90%)
+        derive(-fx-base, 10%) 
+        linear-gradient(to bottom, derive(-fx-base,80%) 20%, derive(-fx-base,-10%) 90%),
+        /* Outer border: */
+        transparent -fx-table-header-border-color -fx-table-header-border-color -fx-table-header-border-color;
+    -fx-border-insets: 0 1 1 1, 0 0 0 0;
+}
+
+.table-view:focused .table-cell:focused {
+    -fx-background-color: -fx-focus-color, -fx-cell-focus-inner-border, -fx-control-inner-background;
+    -fx-background-insets: 0 1 0 0, 1 2 1 1, 2 3 2 2;
+}
+
+.table-view:focused .table-row-cell:filled .table-cell:focused:selected {
+    -fx-background-color: -fx-focus-color, -fx-cell-focus-inner-border, -fx-selection-bar;
+    -fx-background-insets: 0 1 0 0, 1 2 1 1, 2 3 2 2;
+    -fx-background: -fx-accent;
+    -fx-text-fill: -fx-selection-bar-text;
+}
+
+.table-view:focused .table-row-cell:filled .table-cell:selected, .table-view:cell-selection .table-row-cell:filled .table-cell:hover:selected {
+    -fx-background: -fx-accent;
+    -fx-background-color: -fx-selection-bar;
+    -fx-text-fill: -fx-selection-bar-text;
+    -fx-background-insets: 0 0 1 0;
+}
+
+.table-view:focused .table-row-cell:filled .table-cell:focused:selected:hover {
+    -fx-background: -fx-accent;
+    -fx-background-color: -fx-focus-color, -fx-cell-focus-inner-border, -fx-selection-bar;
+    -fx-background-insets: 0 1 0 0, 1 2 1 1, 2 3 2 2;
+    -fx-text-fill: -fx-selection-bar-text;
+}
+
+/* When the TableView is _not_ focused, we show alternate selection colors */
+.table-row-cell:filled .table-cell:selected:focused,  .table-row-cell:filled .table-cell:selected {
+    -fx-background-color: lightgray;
+    -fx-text-fill: -fx-selection-bar-text;
+}
+
+.table-cell:selected:disabled {
+    -fx-opacity: -fx-disabled-opacity;
+}
+
+/*.table-cell:focused {
+    -fx-background-color: -fx-focus-color, -fx-control-inner-background;
+    -fx-background-insets: 0, 1.4;
+}*/
+
+.table-view:cell-selection  .table-row-cell:filled .table-cell:hover {
+    -fx-background-color: -fx-cell-hover-color;
+    -fx-text-fill: -fx-text-inner-color;
+    -fx-background-insets: 0 0 1 0;
+}
+
+.table-view:cell-selection .table-row-cell:filled .table-cell:focused:hover {
+    -fx-background-color: -fx-focus-color, -fx-cell-focus-inner-border, -fx-cell-hover-color;
+    -fx-background-insets: 0 1 0 0, 1 2 1 1, 2 3 2 2;
+    -fx-text-fill: -fx-text-inner-color;
+}
+
+/* The column-resize-line is shown when the user is attempting to resize a column. */
+.table-view .column-resize-line {
+    -fx-background: -fx-accent;
+    -fx-background-color: -fx-selection-bar;
+    -fx-padding: 0.0em 0.0416667em 0.0em 0.0416667em; /* 0 0.571429 0 0.571429 */
+}
+
+/* This is the area behind the column headers. An ideal place to specify background
+   and border colors for the whole area (not individual column-header's). */
+.table-view .column-header-background {
+    -fx-background-color: -fx-body-color;
+    -fx-padding: 0;
+}
+
+/* The column header row is made up of a number of column-header, one for each
+   TableColumn, and a 'filler' area that extends from the right-most column
+   to the edge of the tableview, or up to the 'column control' button. */
+.table-view .column-header, .table-view .filler {
+    -fx-text-fill: -fx-selection-bar-text;
+
+    /* TODO: for some reason, this doesn't scale. */
+    -fx-font-size: 1.083333em; /* 13pt - 1 more than the default font */
+    -fx-size: 25;
+    -fx-border-style: solid;
+    -fx-border-color: 
+        /* 
+          Inner border: we have different colours along the top, right, bottom and left.
+          Refer to RT-12298 for the spec.
+        */
+        derive(-fx-base, 80%) 
+        linear-gradient(to bottom, derive(-fx-base,80%) 20%, derive(-fx-base,-10%) 90%)
+        derive(-fx-base, 10%) 
+        linear-gradient(to bottom, derive(-fx-base,80%) 20%, derive(-fx-base,-10%) 90%),
+        /* Outer border: */
+        transparent -fx-table-header-border-color -fx-table-header-border-color transparent;
+    -fx-border-insets: 0 1 1 0, 0 0 0 0;
+    -fx-border-width: 0.083333em, 0.083333em;
+}
+
+.table-view .column-header .sort-order {
+    -fx-font-size: 0.916667em; /* 11pt - 1 less than the default font */
+}
+
+.table-view .show-hide-columns-button {
+    -fx-background-color: -fx-body-color;
+
+    -fx-border-color:
+        /* inner border: A copy of the inner border used above in the general column header area. */
+        derive(-fx-base, 80%) 
+        linear-gradient(to bottom, derive(-fx-base,80%) 20%, derive(-fx-base,-10%) 90%),
+        derive(-fx-base, 10%) 
+        linear-gradient(to bottom, derive(-fx-base,80%) 20%, derive(-fx-base,-10%) 90%),
+        /* outer border: Slightly different to the above*/
+        transparent transparent -fx-table-header-border-color -fx-table-header-border-color;
+    -fx-border-insets: 0 0 1 1, 0 0 0 0;
+}
+
+.table-view .show-hide-column-image {
+    -fx-background-color: -fx-mark-highlight-color, -fx-mark-color;
+    -fx-background-insets: 1 0 -1 0, 0;
+
+    -fx-padding: 0.25em; /* 3px */
+    -fx-shape: "M398.902,298.045c0.667,0,1.333,0,2,0c0,0.667,0,1.333,0,2c0.667,0,1.333,0,2,0c0,0.667,0,1.333,0,2c-0.667,0-1.333,0-2,0c0,0.666,0,1.332,0,1.999c-0.667,0-1.333,0-2,0c0-0.667,0-1.333,0-1.999c-0.666,0-1.333,0-1.999,0c0-0.667,0-1.334,0-2c0.666,0,1.333,0,1.999,0C398.902,299.378,398.902,298.711,398.902,298.045z"; 
+}
+
+/*.nested-column-header .column-header {
+    -fx-background-color: transparent;
+}*/
+
+/* When a column is being 'dragged' to be placed in a different position, there
+   is a region that follows along the column header area to indicate where the
+   column will be dropped. This region can be styled using the .column-drag-header
+   name. */
+.table-view .column-drag-header {
+    -fx-background: -fx-accent;
+    -fx-background-color: -fx-selection-bar;
+    -fx-border-color: transparent;
+    -fx-opacity: 0.6;
+}
+
+/* Semi-transparent overlay to indicate the column that is currently being moved */
+.table-view .column-overlay {
+    -fx-background-color: darkgray;
+    -fx-opacity: 0.3;
+}
+
+.table-view .arrow {
+    -fx-background-color: -fx-mark-highlight-color, -fx-mark-color;
+    -fx-background-insets: 1 0 -1 0, 0;
+    -fx-padding: 0.25em 0.3125em 0.25em 0.3125em; /* 3 3.75 3 3.75 */
+    -fx-shape: "M 0 0 h 7 l -3.5 4 z";
+}
+
+/* This is shown when the table has no rows and/or no columns. */
+.table-view .empty-table {
+    -fx-background-color: white;
+    -fx-font-size: 1.166667em; /* 14pt - 2 more than the default font */
+}
+
+/*******************************************************************************
+ *                                                                             *
+ * ProgressBar                                                                 *
+ *                                                                             *
+ ******************************************************************************/
+
+.progress-bar {
+    -fx-skin: "com.sun.javafx.scene.control.skin.ProgressBarSkin";
+    -fx-background-color:
+        -fx-color-app-background,
+        linear-gradient(to bottom, derive(-fx-color-app-background,30%) 5%, derive(-fx-color-app-background,-17%));
+    -fx-background-insets: 0, 1;
+    -fx-indeterminate-bar-length: 60;
+    -fx-indeterminate-bar-escape: true;
+    -fx-indeterminate-bar-flip: true;
+    -fx-indeterminate-bar-animation-time: 2;
+    -fx-border-color: -fx-color-app-background;
+    -fx-border-width: 0;
+}
+
+.progress-bar .bar {
+    -fx-background-color:
+        -fx-color-app-background,
+        linear-gradient(to bottom, derive(-fx-color-theme,95%), derive(-fx-color-theme,10%)),
+        linear-gradient(to bottom, derive(-fx-color-theme,38%), -fx-color-theme);
+    -fx-background-insets: 0, 1, 2;
+    -fx-padding: 0.416667em; /* 5 */
+}
+
+.progress-bar:indeterminate .bar {
+    -fx-background-color: linear-gradient(to left, transparent, -fx-color-theme);
+}
+
+.progress-bar .track {
+     -fx-background-color:
+        -fx-color-app-background,
+        linear-gradient(to bottom, derive(-fx-color-app-background,-15%), derive(-fx-color-app-background,2.2%) 20%, derive(-fx-color-app-background,60%));
+    -fx-background-insets:  0;
+}
+
+.progress-bar:disabled {
+    -fx-opacity: -fx-disabled-opacity;
+}
+
+/*******************************************************************************
+ *                                                                             *
+ * ProgressIndicator                                                           *
+ *                                                                             *
+ ******************************************************************************/
+
+.progress-indicator {
+    -fx-skin: "com.sun.javafx.scene.control.skin.ProgressIndicatorSkin";
+    -fx-progress-color: dodgerblue;
+}
+
+.progress-indicator .indicator {
+    -fx-background-color:
+        -fx-box-border,
+        -fx-outer-border,
+        -fx-inner-border,
+        -fx-body-color;
+    -fx-background-insets: 1 0 -1 0, 0, 1, 2;
+    -fx-padding: 0.083333em; /* 1 */
+}
+
+.progress-indicator .progress {
+    -fx-background-color:
+        linear-gradient(to bottom, derive(-fx-box-border,38%), derive(-fx-box-border,-60%)),
+        linear-gradient(to bottom, derive(-fx-box-border,38%), -fx-box-border);
+    -fx-background-insets: 0, 1;
+    -fx-padding: 0.75em; /* 9 */
+}
+
+/* TODO: scaling the shape seems to make it disappear */
+.progress-indicator .tick {
+    -fx-background-color: -fx-mark-color, white;
+    -fx-background-insets: 1 0 -1 0, 0;
+    -fx-padding: 0.416667em; /* 5 */
+    -fx-shape: "M 0,5 L 2.5,5 L 3.7,7.5 L 7.5,0 L 10,0 L 5,10 L 2.5,10 Z";
+    -fx-scale-shape: false;
+}
+
+.progress-indicator:indeterminate .spinner {
+    -fx-padding: 0.833333em; /* 10 */
+}
+
+.progress-indicator .percentage {
+    -fx-font-size: 0.916667em; /* 11pt - 1 less than the default font */
+    -fx-fill: -fx-text-background-color;
+}
+
+.progress-indicator:disabled {
+    -fx-opacity: -fx-disabled-opacity;
+}
+
+ 
+/*******************************************************************************
+ *                                                                             *
+ * Tooltip                                                                     *
+ *                                                                             *
+ ******************************************************************************/
+
+.tooltip {
+    -fx-skin: "com.sun.javafx.scene.control.skin.TooltipSkin";
+    -fx-background-color: -fx-color-theme;
+    -fx-border-color: -fx-color-theme;
+    -fx-border-width: 1;
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+    -fx-padding: 3 5 3 5;
+    -fx-font-family: Segoe UI;
+    -fx-font-size: 12;
+    -fx-effect: dropshadow( one-pass-box , -fx-color-app-background , 0 , 0 , 0 , 0 );
+}
+
+.tooltip .label{
+	-fx-wrap-text:true;
+	-fx-text-fill: -fx-color-app-background;
+}
+
+.page-corner {
+    -fx-padding: 3 5 3 5;
+    -fx-background-color: -fx-color-app-background;
+    -fx-shape: "M0,0Z";
+    -fx-effect: dropshadow( one-pass-box , -fx-color-app-background , 0 , 0 , 0 , 0 );
+}
